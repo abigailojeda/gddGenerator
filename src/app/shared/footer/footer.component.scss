@@ -1,0 +1,18 @@
+.footer-cont{
+
+    width: 100%;
+    padding: 1em 0;
+    background-color: #6633FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span{
+        color: #fff;
+        font-size: 1rem;
+    }
+
+    img{
+        height: 80px;
+    }
+}

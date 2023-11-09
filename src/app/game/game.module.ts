@@ -4,6 +4,7 @@ import { GamePageComponent } from './game-page/game-page.component';
 import { GameItemComponent } from './game-item/game-item.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GameRoutingModule } from './game-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { GameRoutingModule } from './game-routing.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    GameRoutingModule
-  ]
+    GameRoutingModule,
+    SharedModule  ]
 })
 export class GameModule { }

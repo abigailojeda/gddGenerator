@@ -1,1 +1,29 @@
-<p>game-page works!</p>
+<div
+    id="game-cont"
+    class="game-cont"
+>
+    <app-game-item
+        [item]="gameItem"
+        *ngFor="let gameItem of gameItems"
+    ></app-game-item>
+    <app-game-item
+        [item]="gameItem"
+        *ngFor="let gameItem of gameItems"
+    ></app-game-item>
+    <app-game-item
+        [item]="gameItem"
+        *ngFor="let gameItem of gameItems"
+    ></app-game-item>
+</div>
+
+<button
+    (click)="test()"
+    class="download-btn"
+>Descargar</button>
+
+<!-- <button (click)="downloadPDF()" class="download-btn">
+    Descargar
+</button> -->
+<!-- <button (click)="generarPDF()" class="download-btn">
+    Generar
+</button> -->
