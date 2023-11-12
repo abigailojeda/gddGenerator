@@ -99,7 +99,7 @@ export class GamePageComponent implements OnInit {
 
  
   public downloadPDF(): void {
-    const DATA:any = document.getElementById('game-cont');
+    const DATA:any = document.getElementById('miDiv');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
       background: 'white',
@@ -124,7 +124,52 @@ export class GamePageComponent implements OnInit {
   }
   
 
+  public test(): void {
+    console.log('hola')
+    const container = document.getElementById('game-cont');
+console.log(container)
+    const elements = container!.querySelectorAll('.impresion');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3,
+    };
   
+    let pageHeight = doc.internal.pageSize.height;
+    let pageHeightLeft = pageHeight;
+    let position = 0;
+  
+    elements.forEach((element:any, index) => {
+      console.log('2')
+      html2canvas(element, options).then((canvas) => {
+        // Comprobamos si necesitamos agregar una nueva página
+        if (position + canvas.height > pageHeight) {
+          doc.addPage();
+          position = 0;
+          pageHeightLeft = pageHeight;
+        }
+  
+        doc.addImage(
+          canvas.toDataURL('image/png'),
+          'PNG',
+          15,
+          position + 15, // Ajusta el espacio superior e inferior
+          canvas.width * 0.75, // Ajusta el ancho según sea necesario
+          canvas.height * 0.75 // Ajusta la altura según sea necesario
+        );
+  
+        position += canvas.height * 0.75;
+        pageHeightLeft -= canvas.height * 0.75;
+  
+        // Guarda el PDF después de procesar todos los elementos
+        if (index === elements.length - 1) {
+          doc.save(`${new Date().toISOString()}_tutorial.pdf`);
+        }
+      });
+    });
+  }
+  
+
 
   
   // public test(): void {
@@ -171,56 +216,56 @@ export class GamePageComponent implements OnInit {
   // }
 
 
-  public test(): void {
-    const DATA: any = document.getElementById('game-cont');
-    const doc = new jsPDF('p', 'pt', 'a4');
-    const bufferX = 15;
-    const bufferY = 15;
-    const a4Width = 595.28;
-    const a4Height = 841.89;
+  // public test(): void {
+  //   const DATA: any = document.getElementById('game-cont');
+  //   const doc = new jsPDF('p', 'pt', 'a4');
+  //   const bufferX = 15;
+  //   const bufferY = 15;
+  //   const a4Width = 595.28;
+  //   const a4Height = 841.89;
   
-    // Establece las márgenes del documento PDF
-    // doc.setMargins(bufferX, bufferY, bufferX, bufferY);
+  //   // Establece las márgenes del documento PDF
+  //   // doc.setMargins(bufferX, bufferY, bufferX, bufferY);
   
-    const options = {
-      background: 'white',
-      scale: 3,
-      width: a4Width - 2 * bufferX, // Ajusta el ancho restando las márgenes
-      height: a4Height - 2 * bufferY // Ajusta la altura restando las márgenes
-    };
+  //   const options = {
+  //     background: 'white',
+  //     scale: 3,
+  //     width: a4Width - 2 * bufferX, // Ajusta el ancho restando las márgenes
+  //     height: a4Height - 2 * bufferY // Ajusta la altura restando las márgenes
+  //   };
   
-    const pageSize = doc.internal.pageSize;
-    const pdfWidth = pageSize.getWidth() - 2 * bufferX;
-    const pdfHeight = pageSize.getHeight() - 2 * bufferY;
+  //   const pageSize = doc.internal.pageSize;
+  //   const pdfWidth = pageSize.getWidth() - 2 * bufferX;
+  //   const pdfHeight = pageSize.getHeight() - 2 * bufferY;
   
-    const totalContentHeight = DATA.scrollHeight;
+  //   const totalContentHeight = DATA.scrollHeight;
   
-    let currentPosition = 0;
-    let currentPage = 1;
+  //   let currentPosition = 0;
+  //   let currentPage = 1;
   
-    function captureAndAddPage() {
-      html2canvas(DATA, {
-        ...options,
-        windowHeight: totalContentHeight - currentPosition,
-        y: currentPosition
-      }).then((canvas) => {
-        const imgData = canvas.toDataURL('image/PNG', 1.0);
-        doc.addImage(imgData, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+  //   function captureAndAddPage() {
+  //     html2canvas(DATA, {
+  //       ...options,
+  //       windowHeight: totalContentHeight - currentPosition,
+  //       y: currentPosition
+  //     }).then((canvas) => {
+  //       const imgData = canvas.toDataURL('image/PNG', 1.0);
+  //       doc.addImage(imgData, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
   
-        currentPosition += pdfHeight;
+  //       currentPosition += pdfHeight;
   
-        if (currentPosition < totalContentHeight) {
-          doc.addPage();
-          currentPage++;
-          captureAndAddPage();
-        } else {
-          doc.save(`${new Date().toISOString()}_tutorial.pdf`);
-        }
-      });
-    }
+  //       if (currentPosition < totalContentHeight) {
+  //         doc.addPage();
+  //         currentPage++;
+  //         captureAndAddPage();
+  //       } else {
+  //         doc.save(`${new Date().toISOString()}_tutorial.pdf`);
+  //       }
+  //     });
+  //   }
   
-    captureAndAddPage();
-  }
+  //   captureAndAddPage();
+  // }
 
   
   

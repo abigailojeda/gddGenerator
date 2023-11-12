@@ -5,6 +5,31 @@
 
 .download-btn{
     position: absolute;
-    top: 2em;
+    top: 8em;
     right: 2em;
 }
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #miDiv {
+        width: 21cm; 
+        height: 29.7cm; 
+        margin: 0 auto; 
+        background-color: lightgray;
+        padding: 20px; 
+        box-sizing: border-box; 
+        transform: scale(0.5); 
+        display: flex;
+        object-fit: cover; 
+        object-position: center;
+      }
+      
+}
+//   @media screen and (max-width: 600px) {
+//     #miDiv {
+  
+//     }
+//   }
+  

@@ -1,0 +1,13 @@
+<div class="navbar-cont">
+    <img [routerLink]="['/home']" [src]="logo" alt="Berry">
+    <div class="user-cont">
+        <h4>{{userName | slice:0:1 | titlecase}}</h4>
+        <div class="logout">
+            <h5 class="username">{{userName | titlecase}}</h5>
+            <h5 class="logout-btn"
+                (click)="logout()"
+            >logout</h5>
+        </div>
+    </div>
+</div>
+

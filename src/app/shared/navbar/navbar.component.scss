@@ -1,0 +1,75 @@
+@import "../../../assets/styles/settings.scss";
+.navbar-cont {
+    background-color: $gray;
+    padding: 16px 22px;
+    display: flex;
+    justify-content: space-between;
+
+    img {
+        cursor: pointer;
+        height: 50px;
+
+        &:hover {
+            transform: scale(1.12);
+            opacity: 0.8;
+        }
+    }
+
+    .user-cont {
+        position: relative;
+        h4 {
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+           
+        }
+
+        .logout {
+            align-items: flex-start;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            left: -60px;
+            width: 100px;
+            padding: 15px;
+            position: absolute;
+            overflow:hidden;
+                    white-space:nowrap;
+                    text-overflow: ellipsis;
+            h5 {
+                &.logout-btn {
+                    border: 1px solid #6633ff;
+                    border-radius: 99px;
+                    color: #6633ff;
+                    cursor: pointer;
+                    margin-top: 5px;
+                    padding: 5px 0;
+                    text-align: center;
+                    width: 100%;
+                }
+
+                &.username{
+                    width: 90%;
+                    white-space:nowrap;
+                    overflow:hidden;
+                    text-overflow: ellipsis;
+                    
+                }
+            }
+        }
+
+        &:hover  .logout{
+            display: flex;
+        }
+    }
+}
