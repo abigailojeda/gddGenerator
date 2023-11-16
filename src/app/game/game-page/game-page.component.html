@@ -1,39 +1,14 @@
 <div class="content">
     <div id="miDiv">
-
-        hola que class="ion-text-left" huacala
-        hola que class="ion-text-left" huacala
-        hola que class="ion-text-left" huacala
-        hola que class="ion-text-left" huacala
-        hola que class="ion-text-left" huacala
-        hola que class="ion-text-left" huacala
-        hola que class="ion-text-left" huacala
-        hola que class="ion-text-left" huacala
+        <input type="text">
+        <div class="game-items-cont">
+            <app-game-item [item]="gameItem" *ngFor="let gameItem of gameItems"></app-game-item>
+        </div>
     </div>
 </div>
 
-<!-- <div
-    id="game-cont"
-    class="game-cont"
->
-    <app-game-item
-        [item]="gameItem"
-        *ngFor="let gameItem of gameItems"
-    ></app-game-item>
-    <app-game-item
-        [item]="gameItem"
-        *ngFor="let gameItem of gameItems"
-    ></app-game-item>
-    <app-game-item
-        [item]="gameItem"
-        *ngFor="let gameItem of gameItems"
-    ></app-game-item>
-</div> -->
-
-<button
-    (click)="downloadPDF()"
-    class="download-btn"
->Descargar</button>
+<button (click)="downloadPDF()" class="download-btn">⤓</button>
+<button *ngIf="gameItems.length<9" (click)="addGameItem()" class="add-btn">+</button>
 
 <!-- <button (click)="downloadPDF()" class="download-btn">
     Descargar

@@ -1,35 +1,83 @@
-.game-cont{
+.game-cont {
     max-width: 800px;
     margin: auto;
 }
 
-.download-btn{
-    position: absolute;
-    top: 8em;
-    right: 2em;
-}
-.content{
+.download-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #6633FF;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bolder;
+    position: fixed;
+    right: 1em;
+    bottom: 4em;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
 
-    #miDiv {
-        width: 21cm; 
-        height: 29.7cm; 
-        margin: 0 auto; 
-        background-color: lightgray;
-        padding: 20px; 
-        box-sizing: border-box; 
-        transform: scale(0.5); 
-        display: flex;
-        object-fit: cover; 
-        object-position: center;
-      }
-      
+    &:hover{
+        background-color: lighten($color: #6633FF, $amount: 5);
+    }
 }
+
+.add-btn{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #6633FF;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: lighten($color: #6633FF, $amount: 5);
+    }
+}
+
+.content {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // flex-wrap: wrap;
+    margin-bottom: 2em;
+    #miDiv {
+        // height: 21cm;
+        // max-width: 29.7cm;
+        min-height: 21cm;
+        max-width: 29.7cm;
+        
+        width: 80%;
+        margin: 4em auto 0 auto;
+        background-color: rgb(231, 236, 241);
+        padding: 20px;
+
+        .game-items-cont {
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: top;
+            flex-wrap: wrap;
+        }
+
+    }
+
+}
+
 //   @media screen and (max-width: 600px) {
 //     #miDiv {
-  
+
 //     }
 //   }
-  
