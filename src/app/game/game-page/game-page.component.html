@@ -1,14 +1,26 @@
-<div class="content">
+<app-navbar></app-navbar>
+
+<div *ngIf="projects && projects.length<1" class="empty">
+    <div class="action">
+        <h1>STAR CREATING A NEW PROJECT</h1>
+        <img [src]="emptyIllustration" alt="">
+    </div>
+    
+</div>
+
+<!-- <div class="content">
     <div id="miDiv">
         <input type="text">
         <div class="game-items-cont">
             <app-game-item [item]="gameItem" *ngFor="let gameItem of gameItems"></app-game-item>
         </div>
     </div>
-</div>
+</div> -->
 
-<button (click)="downloadPDF()" class="download-btn">⤓</button>
-<button *ngIf="gameItems.length<9" (click)="addGameItem()" class="add-btn">+</button>
+
+    <button  *ngIf="projects.length>0" (click)="downloadPDF()" class="download-btn">⤓</button>
+    <button *ngIf="gameItems.length<9 " (click)="addGameItem()" class="add-btn">+</button>
+
 
 <!-- <button (click)="downloadPDF()" class="download-btn">
     Descargar

@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
     .subscribe(res=>{
       console.log('dbdb', res)
       if(res === true){
-        this.router.navigate(['/home'])
+        this.router.navigate(['/login'])
       }else{
         console.log('dbdb', res)
 

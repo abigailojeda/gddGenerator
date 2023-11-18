@@ -51,11 +51,9 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(user)
     .subscribe(res=>{
-      console.log('dbdb', res)
       if(res === true){
         this.router.navigate(['/home'])
       }else{
-        console.log('dbdb', res)
 
         if(res?.error?.msg){
           this.loginError=res.error.msg;

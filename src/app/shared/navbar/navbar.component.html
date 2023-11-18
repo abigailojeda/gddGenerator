@@ -1,13 +1,27 @@
-<div class="navbar-cont">
-    <img [routerLink]="['/home']" [src]="logo" alt="Berry">
+<div #sidebar class="navbar-cont mobile-hidden">
+    <button (click)="toggleMobileClass()" class="close-btn">&times;</button>
+    <div class="header">
+        <!-- <img
+            [src]="logoIcon"
+            alt=""
+        > -->
+
+        <span class="title">GDD</span>
+         <h5 class="username">{{userName | titlecase}}</h5>
+    </div>
+
     <div class="user-cont">
-        <h4>{{userName | slice:0:1 | titlecase}}</h4>
         <div class="logout">
-            <h5 class="username">{{userName | titlecase}}</h5>
-            <h5 class="logout-btn"
+            <!-- <h5 class="username">{{userName | titlecase}}</h5> -->
+
+            <h5
+                class="logout-btn"
                 (click)="logout()"
-            >logout</h5>
+            >Logout</h5>
         </div>
     </div>
 </div>
 
+<button (click)="toggleMobileClass()" class="menu-btn">
+    <img [src]="menuIcon" alt="">
+</button>

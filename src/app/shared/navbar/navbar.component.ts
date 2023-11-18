@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
 
@@ -7,25 +7,30 @@ import { AuthService } from '../../auth/services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent  {
+  @ViewChild('sidebar') sidebar!: ElementRef;
+
   public userName='';
+  public logoIcon:string = 'assets/img/logo/3.svg'
+  public logOutIcon:string = 'assets/img/users/logout.svg'
+  public userIcon:string = 'assets/img/icons/user.svg'
+  public menuIcon:string = 'assets/img/icons/menu.svg'
+
   
   constructor(
     private router:Router,
     private AuthService:AuthService
     ) {
-    
+     
    }
 
-  public logo:string = '';
-  public user = 'juan'
-
   ngOnInit(): void {
-    this.logo = 'assets/img/logo/1.svg';
+
     this.setUserName()
   }
 
   logout(){
+    this.toggleMobileClass()
     this.AuthService.logout().then(() => {
       this.router.navigateByUrl("/login");
     });
@@ -36,5 +41,11 @@ export class NavbarComponent implements OnInit {
     this.userName = user?.username!;
   }
 
+  toggleMobileClass() {
+    if (this.sidebar) {
+      this.sidebar.nativeElement.classList.toggle('mobile-hidden');
+      this.sidebar.nativeElement.classList.toggle('mobile-show');
+    }
+  }
 
 }

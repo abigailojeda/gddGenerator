@@ -1,75 +1,164 @@
 @import "../../../assets/styles/settings.scss";
-.navbar-cont {
-    background-color: $gray;
-    padding: 16px 22px;
+.navbar-cont{
+    position: relative;
+    width: 150px;
+    background-color: #6633FF;
     display: flex;
+    flex-direction: column;
+    position:fixed;
+    bottom:0;
+    top:0;
+    left:0;
     justify-content: space-between;
+    align-items: flex-start;
 
-    img {
-        cursor: pointer;
-        height: 50px;
+    .header{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+        span{
+            color: #fff;
+            font-size: 1rem;
+            width: 100%;
+            &.title{
+                border-bottom: 1px solid lighten($color: #6633FF, $amount: 10);
+                padding-bottom: 1em;
+                margin-bottom: 1em;
+            }
+        }
 
-        &:hover {
-            transform: scale(1.12);
-            opacity: 0.8;
+        h5{
+            color: lighten($color: #6633FF, $amount: 10);
+        }
+    
+        img{
+            height: 80px;
+            margin-bottom: 1em;
         }
     }
-
     .user-cont {
-        position: relative;
-        h4 {
-            color: #fff;
-            border: 1px solid #fff;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-
-           
-        }
-
+       width: 100%;
+       display: flex;
+       justify-content: flex-start;
+       padding:1em;
         .logout {
-            align-items: flex-start;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            left: -60px;
-            width: 100px;
-            padding: 15px;
-            position: absolute;
+             color: #fff;
             overflow:hidden;
-                    white-space:nowrap;
-                    text-overflow: ellipsis;
+            width: 100%;
             h5 {
+                width: 100%;
                 &.logout-btn {
-                    border: 1px solid #6633ff;
-                    border-radius: 99px;
-                    color: #6633ff;
+                    background-color: lighten($color: #6633FF, $amount: 10);
+                    color: #fff;
                     cursor: pointer;
                     margin-top: 5px;
                     padding: 5px 0;
                     text-align: center;
                     width: 100%;
+
+                    &:hover{
+                        background-color: lighten($color: #6633FF, $amount: 12);
+                    }
                 }
 
                 &.username{
-                    width: 90%;
-                    white-space:nowrap;
-                    overflow:hidden;
-                    text-overflow: ellipsis;
+                   color: #fff;
                     
                 }
             }
         }
 
-        &:hover  .logout{
-            display: flex;
-        }
+        
+    }
+}
+
+.menu-btn{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #6633FF;
+    color: #fff;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: fixed;
+    right: 1em;
+    bottom: 7em;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: lighten($color: #6633FF, $amount: 5);
+    }
+}
+
+.close-btn{
+    position: absolute;    
+    right: 0.5em;
+    top: 0.2em;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color:lighten($color: #6633FF, $amount: 5);
+    display: none;
+
+    &:focus,&:active{
+        outline: none;
+    } 
+}
+
+
+@media (max-width: 600px) {
+    .navbar-cont{
+    width: 100%;
+    z-index: 20;
+    }
+
+    .mobile-hidden{
+   
+       scale: 0;
+      
+        
+    }
+
+    .mobile-show{
+       
+        animation: appear 1s linear;
+    }
+
+
+    .close-btn, .menu-btn{
+        display: flex;
+    }
+}
+
+
+@keyframes appear {
+    0%{
+        left: -100%; 
+    }
+    100%{
+        left:0;
+
+    }
+}
+
+@keyframes disappear {
+    0%{
+        left:0; 
+    }
+    100%{
+        left:-100%;
+
     }
 }

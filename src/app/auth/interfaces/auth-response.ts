@@ -1,7 +1,7 @@
 export interface AuthResponse {
    
     ok:boolean;
-    id?: number;
+    id: string;
     username?: string;
     token?: string;
     msg?: string;

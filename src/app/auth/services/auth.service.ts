@@ -54,7 +54,8 @@ export class AuthService {
       tap(res => {
         if(res.ok){
           localStorage.setItem('token', res.token!)
-          this._user = {
+          localStorage.setItem('user', res.id);
+        this._user = {
             username: res.username!,
             id: res.id!,
           }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { GameService } from '../services/game.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./game-page.component.scss']
 })
 export class GamePageComponent implements OnInit {
-
+public projects:any = []
   public categories: any = [
     {
       id: '01',
@@ -90,11 +91,17 @@ export class GamePageComponent implements OnInit {
       category_id: '01'
     },
   ]
+  public emptyIllustration:string = 'assets/img/illustrations/empty.svg'
 
-  constructor() { }
+  constructor(
+    private gameService:GameService
+  ) { }
 
   ngOnInit(): void {
-
+    this.gameService.getProjects().subscribe((res)=>{
+      console.log(res)
+      this.projects = res
+    })
   }
 
   public addGameItem() {
