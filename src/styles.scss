@@ -1,4 +1,4 @@
-*{
+* {
     font-family: RobotoRegular;
     color: #7a738d;
     padding: 0;
@@ -6,9 +6,9 @@
     box-sizing: border-box;
 }
 
-$berry-background: #F4F3F8; 
+$berry-background: #F4F3F8;
 
-body{
+body {
     background-color: $berry-background;
 }
 
@@ -21,16 +21,29 @@ body{
 
 /* Track */
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #f1e8e8; 
+    box-shadow: inset 0 0 5px #f1e8e8;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #dad8d8; 
+    background: #dad8d8;
     //border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #929292; 
+    background: #929292;
+}
+
+.input-text {
+    width: 235px;
+    padding: 10px 5px;
+    border-radius: 8px;
+    border: 1px solid #9a94aa;
+    margin-bottom: 15px;
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
 }

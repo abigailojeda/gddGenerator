@@ -10,95 +10,100 @@ import { GameService } from '../services/game.service';
   styleUrls: ['./game-page.component.scss']
 })
 export class GamePageComponent implements OnInit {
-public projects:any = []
-  public categories: any = [
-    {
-      id: '01',
-      name: 'general'
-    },
-    {
-      id: '02',
-      name: 'art'
-    },
-    {
-      id: '03',
-      name: 'sound'
-    },
-    {
-      id: '04',
-      name: 'development'
-    },
+  public projects: any = []
+  // public categories: any = [
+  //   {
+  //     id: '01',
+  //     name: 'general'
+  //   },
+  //   {
+  //     id: '02',
+  //     name: 'art'
+  //   },
+  //   {
+  //     id: '03',
+  //     name: 'sound'
+  //   },
+  //   {
+  //     id: '04',
+  //     name: 'development'
+  //   },
 
-  ]
+  // ]
 
-  public gameItems: any = [
-    {
-      id: '001',
-      title: 'Introducción',
-      description: 'Lorem ipsum sit amet',
-      category_id: '01'
-    },
-    {
-      id: '002',
-      title: 'Personajes',
-      description: 'Lorem ipsum sit amet',
-      subitems: [
-        {
-          id: '01',
-          img: '',
-          name: 'personaje 1',
-          description: ''
-        },
-        {
-          id: '02',
-          img: '',
-          name: 'personaje 2',
-          description: ''
-        },
-        {
-          id: '03',
-          img: '',
-          name: 'personaje 3',
-          description: ''
-        },
-      ],
-      category_id: '01'
-    },
-    {
-      id: '003',
-      title: 'Mecánicas',
-      description: 'Lorem ipsum sit amet',
-      subitems: [
-        {
-          id: '01',
-          img: '',
-          name: 'salto',
-          description: ''
-        },
-        {
-          id: '02',
-          img: '',
-          name: 'disparo',
-          description: ''
-        },
-        {
-          id: '03',
-          img: '',
-          name: 'recolección',
-          description: ''
-        },
-      ],
-      category_id: '01'
-    },
-  ]
-  public emptyIllustration:string = 'assets/img/illustrations/empty.svg'
+  // public gameItems: any = [
+  //   {
+  //     id: '001',
+  //     title: 'Introducción',
+  //     description: 'Lorem ipsum sit amet',
+  //     category_id: '01'
+  //   },
+  //   {
+  //     id: '002',
+  //     title: 'Personajes',
+  //     description: 'Lorem ipsum sit amet',
+  //     subitems: [
+  //       {
+  //         id: '01',
+  //         img: '',
+  //         name: 'personaje 1',
+  //         description: ''
+  //       },
+  //       {
+  //         id: '02',
+  //         img: '',
+  //         name: 'personaje 2',
+  //         description: ''
+  //       },
+  //       {
+  //         id: '03',
+  //         img: '',
+  //         name: 'personaje 3',
+  //         description: ''
+  //       },
+  //     ],
+  //     category_id: '01'
+  //   },
+  //   {
+  //     id: '003',
+  //     title: 'Mecánicas',
+  //     description: 'Lorem ipsum sit amet',
+  //     subitems: [
+  //       {
+  //         id: '01',
+  //         img: '',
+  //         name: 'salto',
+  //         description: ''
+  //       },
+  //       {
+  //         id: '02',
+  //         img: '',
+  //         name: 'disparo',
+  //         description: ''
+  //       },
+  //       {
+  //         id: '03',
+  //         img: '',
+  //         name: 'recolección',
+  //         description: ''
+  //       },
+  //     ],
+  //     category_id: '01'
+  //   },
+  // ]
+  public emptyIllustration: string = 'assets/img/illustrations/empty.svg'
+  public showCreateProjectModal: boolean = false
 
   constructor(
-    private gameService:GameService
+    private gameService: GameService
   ) { }
 
   ngOnInit(): void {
-    this.gameService.getProjects().subscribe((res)=>{
+    this.getProjects()
+  }
+
+  public getProjects() {
+    this.gameService.getProjects().subscribe((res) => {
       console.log(res)
       this.projects = res
     })
@@ -115,7 +120,7 @@ public projects:any = []
       category_id: '01'
     }
 
-    this.gameItems.push(item)
+    // this.gameItems.push(item)
   }
 
   public downloadPDF(): void {
@@ -286,6 +291,8 @@ public projects:any = []
   //   captureAndAddPage();
   // }
 
-
+  public toggleShowCreateProjectModal() {
+    this.showCreateProjectModal = !this.showCreateProjectModal
+  }
 
 }

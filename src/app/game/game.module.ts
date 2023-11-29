@@ -5,12 +5,14 @@ import { GameItemComponent } from './game-item/game-item.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GameRoutingModule } from './game-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { CreateProjectModalComponent } from './create-project-modal/create-project-modal.component';
 
 
 @NgModule({
   declarations: [
     GamePageComponent,
-    GameItemComponent
+    GameItemComponent,
+    CreateProjectModalComponent
   ],
   imports: [
     CommonModule,

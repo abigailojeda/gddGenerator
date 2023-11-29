@@ -1,11 +1,17 @@
 <app-navbar></app-navbar>
 
-<div *ngIf="projects && projects.length<1" class="empty">
-    <div class="action">
-        <h1>STAR CREATING A NEW PROJECT</h1>
-        <img [src]="emptyIllustration" alt="">
-    </div>
-    
+<div *ngIf="projects && projects.length < 1" class="empty">
+  <div (click)="toggleShowCreateProjectModal()" class="action">
+    <h1>STAR CREATING A NEW PROJECT</h1>
+    <img [src]="emptyIllustration" alt="" />
+  </div>
+</div>
+
+<div id="miDiv" class="projects-cont" *ngIf="projects && projects.length > 0">
+  <div class="project" *ngFor="let project of projects">
+    <h5>{{ project.project_name }}</h5>
+    <p>{{ project.description }}</p>
+  </div>
 </div>
 
 <!-- <div class="content">
@@ -17,10 +23,14 @@
     </div>
 </div> -->
 
-
-    <button  *ngIf="projects.length>0" (click)="downloadPDF()" class="download-btn">⤓</button>
-    <button *ngIf="gameItems.length<9 " (click)="addGameItem()" class="add-btn">+</button>
-
+<button
+  *ngIf="projects.length > 0"
+  (click)="downloadPDF()"
+  class="download-btn"
+>
+  ⤓
+</button>
+<button (click)="toggleShowCreateProjectModal()" class="add-btn">+</button>
 
 <!-- <button (click)="downloadPDF()" class="download-btn">
     Descargar
@@ -28,3 +38,10 @@
 <!-- <button (click)="generarPDF()" class="download-btn">
     Generar
 </button> -->
+
+<!-- CREATE PROJECT MODAL -->
+<app-create-project-modal
+  *ngIf="showCreateProjectModal"
+  (toggleShowCreateProjectModal)="toggleShowCreateProjectModal()"
+  (updateProjects)="getProjects()"
+></app-create-project-modal>
