@@ -125,33 +125,86 @@
     padding-top: 50px;
 
     .project {
-       
+
         width: 250px;
-        height: 70px;
+        height: 130px;
         border-radius: 8px;
-        padding: 12px;
+        padding: 0.5em;
         margin: 0.5em;
         background-color: #fff;
-        border: 1px solid #d4d1db;
         // -webkit-box-shadow: 0px 0px 5px 0px rgba(159, 160, 189, 1);
         // -moz-box-shadow: 0px 0px 5px 0px rgba(159, 160, 189, 1);
         // box-shadow: 0px 0px 5px 0px rgba(159, 160, 189, 1);
-        cursor: pointer;
+        position: relative;
 
-        &:hover{
-            transform: scale(105%)
-        }
 
-        p{
-            font-size: 14px;
-            margin-top: 0.5em;
-            &::selection{
-                background-color: transparent;
+
+        .actions {
+            border-top-right-radius: 8px;
+            border-top-left-radius: 8px;
+            padding: 0.2em;
+            // background-color: rgba(167, 154, 241, 0.459);
+            border-bottom: 2px solid #6633ff42;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5em;
+
+            .project-title{
+                font-size: 16px;
+                cursor: pointer;
+
+                &:hover{
+                    color: #6633FF;
+                }
+                
+            }
+
+            .btn-cont {
+
+                button {
+                    border-radius: 100%;
+                    border: none;
+                    cursor: pointer;
+                    background-color: transparent;
+
+                    &:first-child {
+                        margin-right: 0.2em;
+                    }
+
+                    &:hover {
+                        transform: scale(1.15);
+                    }
+
+                    img {
+                        height: 20px;
+                    }
+                }
             }
         }
 
-        h5{
-            &::selection{
+
+        .description-cont {
+            padding:  0 0.2em;
+
+            height: 70px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            /* Número de líneas que deseas mostrar */
+            -webkit-box-orient: vertical;
+
+            p {
+                font-size: 14px;
+
+                &::selection {
+                    background-color: transparent;
+                }
+            }
+        }
+
+        h5 {
+            &::selection {
                 background-color: transparent;
             }
         }
@@ -171,8 +224,8 @@
 
     }
 
-    
-.projects-cont {
-    padding-left: 50px;
-}
+
+    .projects-cont {
+        padding-left: 50px;
+    }
 }

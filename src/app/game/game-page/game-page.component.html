@@ -9,8 +9,21 @@
 
 <div id="miDiv" class="projects-cont" *ngIf="projects && projects.length > 0">
   <div class="project" *ngFor="let project of projects">
-    <h5>{{ project.project_name }}</h5>
-    <p>{{ project.description }}</p>
+    <div class="actions">
+      <h5 class="project-title">{{ project.project_name }}</h5>
+
+      <div class="btn-cont">
+        <button>
+          <img [src]="editIcon" alt="" />
+        </button>
+        <button (click)="selectProject(project)">
+          <img [src]="deleteIcon" alt="" />
+        </button>
+      </div>
+    </div>
+    <div class="description-cont">
+      <p>{{ project.description }}</p>
+    </div>
   </div>
 </div>
 
@@ -45,3 +58,13 @@
   (toggleShowCreateProjectModal)="toggleShowCreateProjectModal()"
   (updateProjects)="getProjects()"
 ></app-create-project-modal>
+
+<!-- <DELETE MODAL -->
+<app-delete-modal
+  *ngIf="showDeleteProjectModal"
+  (toggleShowModal)="toggleShowDeleteProjectModal()"
+  (deleteItem)="deleteProject()"
+  [valueToShow]="'project_name'"
+  [item]="selectedProject"
+>
+</app-delete-modal>

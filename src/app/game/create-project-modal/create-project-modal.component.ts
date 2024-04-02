@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { GameService } from '../services/game.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-project-modal',
@@ -10,13 +11,30 @@ export class CreateProjectModalComponent implements OnInit {
   @Output() toggleShowCreateProjectModal = new EventEmitter<any>();
   @Output() updateProjects = new EventEmitter<any>();
 
-  public projectName = ''
-  public projectDescription = ''
+
   private userId: string | null = ''
-  constructor(private gameService: GameService) { }
+  public projectForm: FormGroup;
+
+  //create a foirmBuilder to save projectName & projectDescription
+  constructor(private gameService: GameService, private formBuilder: FormBuilder) {
+    // Initialize the form with empty values
+    this.projectForm = this.formBuilder.group({
+      project_name: '',
+      description: ''
+    });
+  }
+
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('user') || '';
+  }
+
+  get projectName() {
+    return this.projectForm.get('projectName')?.value;
+  }
+
+  get projectDescription() {
+    return this.projectForm.get('projectDescription')?.value;
   }
 
   public hideModal() {
@@ -24,20 +42,20 @@ export class CreateProjectModalComponent implements OnInit {
   }
 
   public createProject() {
-    let body = {
-      user_id: this.userId,
-      project_name: this.projectName,
-      description: this.projectDescription
-    }
+    let body = this.projectForm.value
 
-    console.log(this.projectName)
+    body.user_id = this.userId,
+
+
+      console.log(this.projectName)
     this.gameService.createProject(body)
       .subscribe(
         (res) => {
-          console.log(res)
           this.updateProjects.emit()
           this.toggleShowCreateProjectModal.emit()
         }
       );
   }
+
+
 }

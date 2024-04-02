@@ -47,3 +47,11 @@ body {
         outline: none;
     }
 }
+
+button{
+    outline: none;
+
+    &:focus, &:active{
+        outline: none;
+    }
+}

@@ -1,0 +1,12 @@
+<div class="modal-cont">
+  <div class="modal-content">
+    <p class="warning">
+      You are deleting <b>"{{ item[valueToShow] ? item[valueToShow] : "- -" }}"</b>
+    </p>
+
+    <div class="buttons-cont">
+      <button (click)="emitDelete()">Accept</button>
+      <button (click)="hideModal()">Cancel</button>
+    </div>
+  </div>
+</div>

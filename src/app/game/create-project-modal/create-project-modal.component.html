@@ -1,11 +1,22 @@
 <div class="modal-cont">
-    <div class="modal-content">
-        <h3 class="title">Create project</h3>
-        <input class="input-text" [(ngModel)]="projectName" type="text" placeholder="Insert project name">
-        <input class="input-text" [(ngModel)]="projectDescription" type="text" placeholder="Insert a small description">
-        <div class="buttons-cont">
-            <button (click)="createProject()">Save</button>
-            <button (click)="hideModal()">Cancel</button>
-        </div>
+  <form [formGroup]="projectForm" (submit)="createProject()" class="modal-content">
+    <h3 class="title">Create project</h3>
+    <input
+      class="input-text"
+      [autofocus]="true"
+      formControlName="project_name"
+      type="text"
+      placeholder="Insert project name"
+    />
+    <input
+      class="input-text"
+      type="text"
+      formControlName="description"
+      placeholder="Insert a small description"
+    />
+    <div class="buttons-cont">
+      <button type="submit">Save</button>
+      <button (click)="hideModal()">Cancel</button>
     </div>
+  </form>
 </div>

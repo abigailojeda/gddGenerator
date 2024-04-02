@@ -23,6 +23,14 @@ export class GameService {
 
   }
 
+  public getHeaders(){
+    return   {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+  }
+
   public getProjects() {
     const url = `${this.AUTH_SERVER_ADDRESS}/gdd/${this.userId}`;
     return this.HttpClient.get(url)
@@ -31,12 +39,14 @@ export class GameService {
 
   createProject(body: any): Observable<any> {
     const url = `${this.AUTH_SERVER_ADDRESS}/gdd/${this.userId}`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
+    const httpOptions = this.getHeaders()
     return this.HttpClient.post(url, body, httpOptions);
+  }
+
+  deleteProject(projectId:string){
+    const url = `${this.AUTH_SERVER_ADDRESS}/gdd/${projectId}`;
+    const httpOptions = this.getHeaders()
+    return this.HttpClient.delete(url, httpOptions);
   }
 
 }

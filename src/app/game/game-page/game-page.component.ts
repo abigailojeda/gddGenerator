@@ -11,88 +11,16 @@ import { GameService } from '../services/game.service';
 })
 export class GamePageComponent implements OnInit {
   public projects: any = []
-  // public categories: any = [
-  //   {
-  //     id: '01',
-  //     name: 'general'
-  //   },
-  //   {
-  //     id: '02',
-  //     name: 'art'
-  //   },
-  //   {
-  //     id: '03',
-  //     name: 'sound'
-  //   },
-  //   {
-  //     id: '04',
-  //     name: 'development'
-  //   },
 
-  // ]
-
-  // public gameItems: any = [
-  //   {
-  //     id: '001',
-  //     title: 'Introducción',
-  //     description: 'Lorem ipsum sit amet',
-  //     category_id: '01'
-  //   },
-  //   {
-  //     id: '002',
-  //     title: 'Personajes',
-  //     description: 'Lorem ipsum sit amet',
-  //     subitems: [
-  //       {
-  //         id: '01',
-  //         img: '',
-  //         name: 'personaje 1',
-  //         description: ''
-  //       },
-  //       {
-  //         id: '02',
-  //         img: '',
-  //         name: 'personaje 2',
-  //         description: ''
-  //       },
-  //       {
-  //         id: '03',
-  //         img: '',
-  //         name: 'personaje 3',
-  //         description: ''
-  //       },
-  //     ],
-  //     category_id: '01'
-  //   },
-  //   {
-  //     id: '003',
-  //     title: 'Mecánicas',
-  //     description: 'Lorem ipsum sit amet',
-  //     subitems: [
-  //       {
-  //         id: '01',
-  //         img: '',
-  //         name: 'salto',
-  //         description: ''
-  //       },
-  //       {
-  //         id: '02',
-  //         img: '',
-  //         name: 'disparo',
-  //         description: ''
-  //       },
-  //       {
-  //         id: '03',
-  //         img: '',
-  //         name: 'recolección',
-  //         description: ''
-  //       },
-  //     ],
-  //     category_id: '01'
-  //   },
-  // ]
   public emptyIllustration: string = 'assets/img/illustrations/empty.svg'
+  public editIcon: string = 'assets/img/icons/edit.svg'
+  public deleteIcon: string = 'assets/img/icons/delete.svg'
   public showCreateProjectModal: boolean = false
+  public showDeleteProjectModal: boolean = false
+  public selectedProject: any
+
+  public message: string = ''
+
 
   constructor(
     private gameService: GameService
@@ -193,9 +121,6 @@ export class GamePageComponent implements OnInit {
     });
   }
 
-
-
-
   // public test(): void {
   //   const DATA: any = document.getElementById('game-cont');
   //   const doc = new jsPDF('p', 'pt', 'a4');
@@ -291,8 +216,28 @@ export class GamePageComponent implements OnInit {
   //   captureAndAddPage();
   // }
 
+  public deleteProject() {
+    this.gameService.deleteProject(this.selectedProject._id)
+      .subscribe(
+        (res) => {
+          console.log(res)
+          this.message = "project deleted"
+          this.toggleShowDeleteProjectModal()
+          this.getProjects()
+        }
+      )
+  }
+
+  public selectProject(project: any) {
+    this.selectedProject = project
+    this.toggleShowDeleteProjectModal()
+  }
+
   public toggleShowCreateProjectModal() {
     this.showCreateProjectModal = !this.showCreateProjectModal
+  }
+  public toggleShowDeleteProjectModal() {
+    this.showDeleteProjectModal = !this.showDeleteProjectModal
   }
 
 }
